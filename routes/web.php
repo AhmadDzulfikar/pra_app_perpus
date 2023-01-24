@@ -40,5 +40,5 @@ Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {
     Route::post('/kirim-pesan', [PesanController::class, 'kirim_pesan'])->name('user.kirim_pesan');
     
     Route::get('/pesan-masuk', [PesanController::class, 'pesan_masuk'])->name('user.pesan_masuk');
-    
+    Route::post('/ubah-status', [PesanController::class, 'ubah_status'])->name('user.ubah_status');
 });

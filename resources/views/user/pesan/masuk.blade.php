@@ -7,17 +7,13 @@
     @endif
     <div class="row">
         <div class="col-9">
-            <h3>Pesan Terkirim</h3>
-            <p class="text-subtitle text-muted">Kirim Pesan Ke Admin</p>
+            <h3>Pesan Masuk</h3>
+            <p class="text-subtitle text-muted">Pesan Dari Admin</p>
         </div>
     </div>
     <section class="section">
         <div class="card">
             <div class="card-body">
-                <button type="button" class="btn shadow btn-primary mb-3" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"><i class="bi bi-send"></i>
-                    Kirim Pesan
-                </button>
 
                 <table class="table table-striped" id="table1">
                     <thead>
@@ -32,16 +28,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pesan as $key => $p)
+                        @foreach ($masuk as $key => $p)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $p->pengirim->fullname }}</td>
                                 <td>{{ $p->judul }}</td>
                                 <td>{{ $p->isi }}</td>
-                                <td>{{ $p->status }}</td>
+                                <td>{{ $p->status == 'terkirim' ? 'Belum Dibaca' : 'Terbaca' }}</td>
                                 <td>{{ $p->tgl_kirim }}</td>
-                                {{-- <td><button class="btn btn-danger"><i class="bi bi-trash"></i></button></td> --}}
-                                {{-- <td><button class="btn btn-success"><i class="bi bi-check-lg"></i></button></td> --}}
+                                <td>
+                                    @if ($p->status == 'terkirim')
+                                        <form action="{{ route('user.ubah_status', ['id' => $p->id]) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="penerima_id" value="{{ Auth::user()->id }}">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="bi bi-check-lg"></i>
+                                            </button>
+                                        </form>
+                                    @else
+                                    <td><button class="btn btn-primary"><i class="bi bi-check2-all"></i></button></td>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -44,6 +44,15 @@ class PesanController extends Controller
             ]);
         }
 
-        return view('user.pesan_masuk', compact('masuk'));
+        return view('user.pesan.masuk', compact('masuk'));
+    }
+
+    public function ubah_status(Request $request)
+    {
+        $status = Pesan::where('id', $request->id)->first();
+        $status->update([
+            'status' => 'dibaca'
+        ]);
+        return redirect()->route('user.pesan_masuk');
     }
 }

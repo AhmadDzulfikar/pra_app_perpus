@@ -13,6 +13,14 @@
 
     <link rel="stylesheet" href="/assets/css/shared/iconly.css" />
     <link rel="stylesheet" href="/assets/css/pages/simple-datatables.css">
+
+    <style>
+        .badge-notification {
+            padding: 3px;
+            position: absolute;
+            right: 20px;
+        }
+    </style>
 </head>
 
 @php
@@ -98,6 +106,10 @@
                                     <a class="nav-link active dropdown-toggle text-gray-600" href="#"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-envelope bi-sub fs-4"></i>
+                                        <span class="badge badge-notification bg-danger">
+
+                                            {{ count($pesan) }}
+                                        </span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                                         @php
@@ -111,11 +123,10 @@
                                         <li>
                                             <h6 class="dropdown-header">Mail</h6>
                                         </li>
-                                        @foreach ($pesans as $p)
+                                        @foreach ($pesan as $p)
                                             <li>
-                                                <form action="{{ route('user.pesan.masuk.update') }}" method="POST">
-                                                    @csrf
-                                                    <button class="dropdown-item" type="submit"><input
+                                                <form action="{{ route('user.ubah_status') }}" method="POST">
+                                                    @csrf <button class="dropdown-item" type="submit"> <input
                                                             type="hidden" name="id"
                                                             value="{{ $p->id }}">
                                                         <div class="row">
@@ -133,60 +144,34 @@
                                                                     {{ $p->isi }}</p>
                                                             </div>
                                                         </div>
-                                                    </button>
-                                                </form>
+                                                    </button> </form>
                                             </li>
                                         @endforeach
+
+                                        @if (count($pesan) == 0)
+                                            <li><a class="dropdown-item" href="#">
+                                                    No New Mail
+                                                </a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </li>
-                                <li class="nav-item dropdown me-3">
-                                    <a class="nav-link active dropdown-toggle text-gray-600" href="#"
-                                        data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class="bi bi-bell bi-sub fs-4"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end notification-dropdown"
-                                        aria-labelledby="dropdownMenuButton">
-                                        <li class="dropdown-header">
-                                            <h6>Notifications</h6>
-                                        </li>
-                                        <li class="dropdown-item notification-item">
-                                            <a class="d-flex align-items-center" href="#">
-                                                <div class="notification-icon bg-primary">
-                                                    <i class="bi bi-cart-check"></i>
-                                                </div>
-                                                <div class="notification-text ms-4">
-                                                    <p class="notification-title font-bold">
-                                                        Successfully check out
-                                                    </p>
-                                                    <p class="notification-subtitle font-thin text-sm">
-                                                        Order ID #256
-                                                    </p>
-                                                </div>
+                                @if (Auth::user()->role == 'admin')
+                                        <li class="nav-item dropdown me-3">
+                                            <a class="nav-link active dropdown-toggle text-gray-600" href="#"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class='bi bi-bell bi-sub fs-4'></i>
                                             </a>
+
+                                            <ul class="dropdown-menu dropdown-menu-end"
+                                                aria-labelledby="dropdownMenuButton">
+                                                <li>
+                                                    <h6 class="dropdown-header">Notifications</h6>
+                                                </li>
+                                                <li><a class="dropdown-item">No notification available</a></li>
+                                            </ul>
                                         </li>
-                                        <li class="dropdown-item notification-item">
-                                            <a class="d-flex align-items-center" href="#">
-                                                <div class="notification-icon bg-success">
-                                                    <i class="bi bi-file-earmark-check"></i>
-                                                </div>
-                                                <div class="notification-text ms-4">
-                                                    <p class="notification-title font-bold">
-                                                        Homework submitted
-                                                    </p>
-                                                    <p class="notification-subtitle font-thin text-sm">
-                                                        Algebra math homework
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <p class="text-center py-2 mb-0">
-                                                <a href="#">See all notification</a>
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                    @endif
                             <div class="dropdown">
                                 <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="user-menu d-flex">

@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Pesan
+Route::get('pesan', [App\Http\Controllers\API\PesanApiController::class, 'index']);
+Route::post('pesan', [App\Http\Controllers\API\PesanApiController::class, 'store']);
+Route::post('pesan/update/{id}', [\App\Http\Controllers\API\PesanApiController::class, 'update']);
+Route::delete('pesan/delete/{id}', [\App\Http\Controllers\API\PesanApiController::class, 'destroy']);

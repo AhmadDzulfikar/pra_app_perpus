@@ -44,13 +44,15 @@
             <span>Pesan</span>
         </a>
         <ul class="submenu ">
-            <li class="submenu-item ">
-                <a href="">Pesan masuk
-                    <span class="badge bg-light-danger badge-pill badge-round float-right mt-50">
-                        {{-- {{ count($pesan) }} --}}
+            <li class="submenu-item {{ request()->is('pengembalian*') ? 'active' : '' }}">
+                <a href={{ route('user.pesan_masuk') }}>Pesan Masuk
+                    <span
+                        class="badge bg-light-danger badge-pill badge-round float-right mt-50">
+                        {{ count($pesan) }}
                     </span>
                 </a>
             </li>
+
             <li class="submenu-item ">
                 <a href="{{ Route('user.pesan_terkirim') }}">Pesan terkirim</a>
             </li>

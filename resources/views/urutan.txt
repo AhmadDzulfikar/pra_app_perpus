@@ -1,0 +1,6 @@
+1. Buat Pesan
+a. buat kirim pesan, pesan masuk, (view, kontroller, web.php)
+b. tes ubah status pake api
+c. Bikin API PESAN (API/PesanController, api.php)
+d. tutup bagian update di dashboard
+e. ubah delete menjadi ceklis 2
