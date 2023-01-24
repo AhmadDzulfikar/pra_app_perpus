@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\PeminjamanController;
 use App\Http\Controllers\User\PesanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,4 +42,11 @@ Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {
     
     Route::get('/pesan-masuk', [PesanController::class, 'pesan_masuk'])->name('user.pesan_masuk');
     Route::post('/ubah-status', [PesanController::class, 'ubah_status'])->name('user.ubah_status');
+
+    //Peminjaman
+    Route::get('riwayat-peminjaman', [PeminjamanController::class, 'riwayatPeminjaman'])->name('user.riwayat_peminjaman');
+
+    Route::get('form-peminjaman', [PeminjamanController::class, 'peminjamanForm'])->name('user.form_peminjaman');
+    Route::post('form-dari-dashboard', [PeminjamanController::class, 'formDasboard'])->name('user.form_peminjaman_dashboard');
+    Route::post('submit-form', [PeminjamanController::class, 'submitForm'])->name('user.submit_peminjaman');
 });

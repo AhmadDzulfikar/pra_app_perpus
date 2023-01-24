@@ -15,10 +15,10 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="">Formulir Peminjaman Buku</a>
+                <a href="{{ Route('user.form_peminjaman') }}">Formulir Peminjaman Buku</a>
             </li>
             <li class="submenu-item ">
-                <a href="">Riwayat Peminjaman Buku</a>
+                <a href="{{ Route('user.riwayat_peminjaman') }}">Riwayat Peminjaman Buku</a>
             </li>
         </ul>
     </li>
