@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\PeminjamanController;
+use App\Http\Controllers\User\PengembalianController;
 use App\Http\Controllers\User\PesanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -49,4 +50,10 @@ Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {
     Route::get('form-peminjaman', [PeminjamanController::class, 'peminjamanForm'])->name('user.form_peminjaman');
     Route::post('form-dari-dashboard', [PeminjamanController::class, 'formDasboard'])->name('user.form_peminjaman_dashboard');
     Route::post('submit-form', [PeminjamanController::class, 'submitForm'])->name('user.submit_peminjaman');
+
+    //Pengembalian
+    Route::get('riwayat-pengembalian', [PengembalianController::class, 'riwayatPengembalian'])->name('user.riwayat_pengembalian');
+
+    Route::get('form-pengembalian', [PengembalianController::class, 'form_pengembalian'])->name('user.form_pengembalian');
+    Route::post('submit-pengembalian', [PengembalianController::class, 'submit_pengembalian'])->name('user.submit_pengembalian');
 });

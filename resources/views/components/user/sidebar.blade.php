@@ -30,10 +30,10 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="">Formulir Pengembalian Buku</a>
+                <a href="{{ Route('user.form_pengembalian') }}">Formulir Pengembalian Buku</a>
             </li>
             <li class="submenu-item ">
-                <a href="">Riwayat Pengembalian Buku</a>
+                <a href="{{ Route('user.riwayat_pengembalian') }}">Riwayat Pengembalian Buku</a>
             </li>
         </ul>
     </li>

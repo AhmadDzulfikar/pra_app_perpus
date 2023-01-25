@@ -46,7 +46,7 @@
                                             </button>
                                         </form>
                                     @else
-                                    <td><button class="btn btn-primary"><i class="bi bi-check2-all"></i></button></td>
+                                    <button class="btn btn-primary"><i class="bi bi-check2-all"></i></button>
                                     @endif
                                 </td>
                             </tr>
