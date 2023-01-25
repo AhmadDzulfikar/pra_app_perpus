@@ -4,6 +4,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\PeminjamanController;
 use App\Http\Controllers\User\PengembalianController;
 use App\Http\Controllers\User\PesanController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -56,4 +57,9 @@ Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {
 
     Route::get('form-pengembalian', [PengembalianController::class, 'form_pengembalian'])->name('user.form_pengembalian');
     Route::post('submit-pengembalian', [PengembalianController::class, 'submit_pengembalian'])->name('user.submit_pengembalian');
+
+    //PROFILE
+    Route::get('profile', [ProfileController::class, 'profile'])->name('user.profile');
+    Route::put('gambar', [ProfileController::class, 'gambar'])->name('user.gambar');
+    
 });
