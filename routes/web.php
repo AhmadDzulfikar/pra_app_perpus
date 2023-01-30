@@ -3,11 +3,13 @@
 use App\Http\Controllers\Admin\AnggotaController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\Admin\PenerbitController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\PeminjamanController;
 use App\Http\Controllers\User\PengembalianController;
 use App\Http\Controllers\User\PesanController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\UserRegister;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +41,8 @@ Route::get('/home', function () {
     }
 })->middleware('auth');
 
+Route::post('/register', [UserRegister::class, 'userRegister'])->name('user.register');
+
 //Admin
 Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -50,10 +54,13 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     Route::put('/edit/anggota/{id}', [AnggotaController::class, 'updateAnggota'])->name('admin.update.anggota');
     Route::delete('/hapus/anggota/{id}', [AnggotaController::class, 'deleteAnggota']);
     Route::post('/update_status/{id}', [AnggotaController::class, 'updateStatus'])->name('admin.update_status_anggota');
+
+    //                [ Penerbit ]  
+    Route::get('/penerbit', [PenerbitController::class, 'indexPenerbit'])->name('admin.penerbit');
     //                [ Laporan ]
     Route::get('/siswa', [LaporanController::class, 'laporan_siswa'])->name('admin.laporan_siswa');
 
-});
+}); 
 
 //User
 Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {
