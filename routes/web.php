@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AnggotaController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\PeminjamanController;
 use App\Http\Controllers\User\PengembalianController;
@@ -20,18 +23,36 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    if (Auth::user()->role == 'admin') {
+
+        return redirect()->route('admin.dashboard');
+    }
+    if (Auth::user()->role == 'user') {
+
+        return redirect()->route('user.dashboard');
+    }
+})->middleware('auth');
 
 //Admin
 Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+    //- - - - - - - - - MasterData - - - - - - - - - -
+    //                [ Anggota ]  
+    Route::get('/anggota', [AnggotaController::class, 'indexAnggota'])->name('admin.anggota');
+    Route::post('/tambah-anggota', [AnggotaController::class, 'storeAnggota'])->name('admin.tambah_anggota');
+    Route::put('/edit/anggota/{id}', [AnggotaController::class, 'updateAnggota'])->name('admin.update.anggota');
+    Route::delete('/hapus/anggota/{id}', [AnggotaController::class, 'deleteAnggota']);
+    Route::post('/update_status/{id}', [AnggotaController::class, 'updateStatus'])->name('admin.update_status_anggota');
+    //                [ Laporan ]
+    Route::get('/siswa', [LaporanController::class, 'laporan_siswa'])->name('admin.laporan_siswa');
+
 });
 
 //User
@@ -41,7 +62,7 @@ Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {
     //Pesan
     Route::get('/pesan-terkirim', [PesanController::class, 'pesan_terkirim'])->name('user.pesan_terkirim');
     Route::post('/kirim-pesan', [PesanController::class, 'kirim_pesan'])->name('user.kirim_pesan');
-    
+
     Route::get('/pesan-masuk', [PesanController::class, 'pesan_masuk'])->name('user.pesan_masuk');
     Route::post('/ubah-status', [PesanController::class, 'ubah_status'])->name('user.ubah_status');
 
@@ -61,5 +82,4 @@ Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {
     //PROFILE
     Route::get('profile', [ProfileController::class, 'profile'])->name('user.profile');
     Route::put('gambar', [ProfileController::class, 'gambar'])->name('user.gambar');
-    
 });

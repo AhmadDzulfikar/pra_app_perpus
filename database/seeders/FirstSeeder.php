@@ -26,16 +26,16 @@ class FirstSeeder extends Seeder
         //USER
         User::Create([
             'kode' => 'Admin1',
-            // 'nis'    => '203910',
+            'nis'    => '203910',
             'fullname'    => 'Zikri Ramdhan',
             'username' => 'Zikri',
             'password'    => Hash::make("password"),
-            // 'kelas'    => 'XII-RPL',
-            // 'alamat' => 'JL.BUNGA SARI',
-            // 'verif'    => '',
+            'kelas'    => 'XII-RPL',
+            'alamat' => 'JL.BUNGA SARI',
+            'verif'    => '',
             'role' => 'admin',
             'join_date'    => '2023-01-06',
-            // 'terakhir_login' => '2023-01-06',
+            'terakhir_login' => '2023-01-06',
             'foto' => '',
         ]);
 

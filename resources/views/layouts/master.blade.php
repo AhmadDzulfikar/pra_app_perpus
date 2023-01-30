@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="/assets/css/shared/iconly.css" />
     <link rel="stylesheet" href="/assets/css/pages/simple-datatables.css">
+    <link rel="stylesheet" href="/assets/css/pages/form-element-select.css">
+
 
     <style>
         .badge-notification {
@@ -21,6 +23,12 @@
             right: 20px;
         }
     </style>
+
+<style>
+    .choices__input{
+        color: black;
+    }
+</style>
 </head>
 
 @php
@@ -157,70 +165,70 @@
                                     </ul>
                                 </li>
                                 @if (Auth::user()->role == 'admin')
-                                        <li class="nav-item dropdown me-3">
-                                            <a class="nav-link active dropdown-toggle text-gray-600" href="#"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class='bi bi-bell bi-sub fs-4'></i>
-                                            </a>
-
-                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="dropdownMenuButton">
-                                                <li>
-                                                    <h6 class="dropdown-header">Notifications</h6>
-                                                </li>
-                                                <li><a class="dropdown-item">No notification available</a></li>
-                                            </ul>
-                                        </li>
-                                    @endif
-                            <div class="dropdown">
-                                <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <div class="user-menu d-flex">
-                                        <div class="user-name text-end me-3">
-                                            <h6 class="mb-0 text-gray-600">{{ Auth::user()->username }}</h6>
-                                            <p class="mb-0 text-sm text-gray-600">{{ Auth::user()->role }}</p>
-                                        </div>
-                                        <div class="user-img d-flex align-items-center">
-                                            <div class="avatar avatar-md">
-                                                @if (Auth::user()->foto != '')
-                                                    <img src="{{ asset('/img/' . Auth::user()->foto) }}"
-                                                        alt="" srcset="">
-                                                @else
-                                                    <img src="assets/images/faces/1.jpg" alt="Face 1">
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
-                                    style="min-width: 11rem">
-                                    <li>
-                                        <h6 class="dropdown-header">Hello, {{ Auth::user()->username }}!</h6>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#"><i
-                                                class="icon-mid bi bi-person me-2"></i> My
-                                            Profile</a>
-                                    </li>
-
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"
-                                            class="sidebar-link">
-                                            <i class="icon-mid bi bi-box-arrow-left me-2"></i>
-                                            <span>Logout</span>
+                                    <li class="nav-item dropdown me-3">
+                                        <a class="nav-link active dropdown-toggle text-gray-600" href="#"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class='bi bi-bell bi-sub fs-4'></i>
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
+                                        <ul class="dropdown-menu dropdown-menu-end"
+                                            aria-labelledby="dropdownMenuButton">
+                                            <li>
+                                                <h6 class="dropdown-header">Notifications</h6>
+                                            </li>
+                                            <li><a class="dropdown-item">No notification available</a></li>
+                                        </ul>
                                     </li>
-                                </ul>
-                            </div>
+                                @endif
+                                <div class="dropdown">
+                                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <div class="user-menu d-flex">
+                                            <div class="user-name text-end me-3">
+                                                <h6 class="mb-0 text-gray-600">{{ Auth::user()->username }}</h6>
+                                                <p class="mb-0 text-sm text-gray-600">{{ Auth::user()->role }}</p>
+                                            </div>
+                                            <div class="user-img d-flex align-items-center">
+                                                <div class="avatar avatar-md">
+                                                    @if (Auth::user()->foto != '')
+                                                        <img src="{{ asset('/img/' . Auth::user()->foto) }}"
+                                                            alt="" srcset="">
+                                                    @else
+                                                        <img src="assets/images/faces/1.jpg" alt="Face 1">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
+                                        style="min-width: 11rem">
+                                        <li>
+                                            <h6 class="dropdown-header">Hello, {{ Auth::user()->username }}!</h6>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="icon-mid bi bi-person me-2"></i> My
+                                                Profile</a>
+                                        </li>
+
+                                        <li>
+                                            <hr class="dropdown-divider" />
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"
+                                                class="sidebar-link">
+                                                <i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                                <span>Logout</span>
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
                         </div>
                     </div>
                 </nav>
@@ -243,6 +251,11 @@
 
     <script src="assets/js/app.js"></script>
     <script src="/assets/js/extensions/simple-datatables.js"></script>
+
+    <script src="/assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
+
+    <script src="/assets/js/extensions/form-element-select.js"></script>
+
 </body>
 
 </html>

@@ -15,16 +15,16 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="{{ route('admin.data.anggota') }}">Data Anggota</a>
+                <a href="{{ Route('admin.anggota') }}">Data Anggota</a>
             </li>
             <li class="submenu-item ">
-                <a href="{{ route('admin.data.penerbit') }}">Data Penerbit</a>
+                <a href="">Data Penerbit</a>
             </li>
             <li class="submenu-item ">
-                <a href="{{ route('admin.data.admin') }}">Administrator</a>
+                <a href="">Administrator</a>
             </li>
             <li class="submenu-item ">
-                <a href="{{ route('admin.data.peminjaman') }}">Data Peminjaman</a>
+                <a href="">Data Peminjaman</a>
             </li>
         </ul>
     </li>
@@ -36,16 +36,16 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="{{ route('admin.data.buku') }}">Data Buku</a>
+                <a href="">Data Buku</a>
             </li>
             <li class="submenu-item ">
-                <a href="{{ route('admin.kategori.buku') }}">Kategori Buku</a>
+                <a href="">Kategori Buku</a>
             </li>
         </ul>
     </li>
 
     <li class="sidebar-item  ">
-        <a href="#" class='sidebar-link'>
+        <a href="{{ Route('admin.laporan_siswa') }}" class='sidebar-link'>
             <i class="bi bi-file-earmark-medical-fill"></i>
             <span>Laporan Perpustakaan</span>
         </a>
@@ -66,14 +66,14 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="{{ route('admin.pesan.masuk') }}">Pesan masuk
+                <a href="">Pesan masuk
                     <span class="badge bg-light-danger badge-pill badge-round float-right mt-50">
                         {{ count($pesan) }}
                     </span>
                 </a>
             </li>
             <li class="submenu-item ">
-                <a href="{{ route('admin.pesan.terkirim') }}">Pesan terkirim</a>
+                <a href="">Pesan terkirim</a>
             </li>
         </ul>
     </li>

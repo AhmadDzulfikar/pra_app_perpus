@@ -89,6 +89,7 @@
                     <tbody>
                         @foreach ($pesan as $key => $p)
                             <tr>
+                                {{-- @dd($p->penerima) --}}
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $p->penerima->fullname }}</td>
                                 <td>{{ $p->judul }}</td>
