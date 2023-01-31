@@ -18,7 +18,7 @@
                 <a href="{{ Route('admin.anggota') }}">Data Anggota</a>
             </li>
             <li class="submenu-item ">
-                <a href="">Data Penerbit</a>
+                <a href="{{ Route('admin.penerbit') }}">Data Penerbit</a>
             </li>
             <li class="submenu-item ">
                 <a href="">Administrator</a>

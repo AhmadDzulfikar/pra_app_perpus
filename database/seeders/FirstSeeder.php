@@ -102,19 +102,19 @@ class FirstSeeder extends Seeder
 
         //PENERBIT
         Penerbit::create([
-            'kode' => 'erlangga',
+            'kode' => '1-00-839289-0',
             'nama'    => 'Erlangga',
             // 'verif' => 'intermedia',
         ]);
 
         Penerbit::create([
-            'kode' => 'bse',
+            'kode' => '1-100-327878-0',
             'nama'    => 'BSE',
             // 'verif' => '',
         ]);
 
         Penerbit::create([
-            'kode' => 'intermedia',
+            'kode' => '1-500-3782781-0',
             'nama'    => 'Intermedia',
             // 'verif' => '',
         ]);

@@ -7,7 +7,7 @@
     @endif
     <div class="row">
         <div class="col-9">
-            <h4>Buku yang sudah dikembalikan</h4>
+            <h4>Data Anggota E - Perpus</h4>
         </div>
         <div class="col-3">
             <a href="{{ Route('user.form_peminjaman') }}" class="btn btn-primary float">Pinjam</a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\AnggotaController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\LaporanController;
@@ -52,11 +53,20 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     Route::get('/anggota', [AnggotaController::class, 'indexAnggota'])->name('admin.anggota');
     Route::post('/tambah-anggota', [AnggotaController::class, 'storeAnggota'])->name('admin.tambah_anggota');
     Route::put('/edit/anggota/{id}', [AnggotaController::class, 'updateAnggota'])->name('admin.update.anggota');
-    Route::delete('/hapus/anggota/{id}', [AnggotaController::class, 'deleteAnggota']);
     Route::post('/update_status/{id}', [AnggotaController::class, 'updateStatus'])->name('admin.update_status_anggota');
+    Route::delete('/hapus/anggota/{id}', [AnggotaController::class, 'deleteAnggota']);
 
     //                [ Penerbit ]  
     Route::get('/penerbit', [PenerbitController::class, 'indexPenerbit'])->name('admin.penerbit');
+    Route::post('/tambah-penerbit', [PenerbitController::class, 'storePenerbit'])->name('admin.tambah_penerbit');
+    Route::put('/edit/penerbit/{id}', [PenerbitController::class, 'updatePenerbit'])->name('admin.update_penerbit');
+    Route::post('/update_status/{id}', [PenerbitController::class, 'updateStatus'])->name('admin.update_status_penerbit');
+    Route::delete('/hapus/penerbit/{id}', [PenerbitController::class, 'deletePenerbit']);
+
+    //                [ Administrator ]  
+    Route::get('/administrator', [AdministratorController::class, 'indexAdministrator'])->name('admin.administrator');
+
+
     //                [ Laporan ]
     Route::get('/siswa', [LaporanController::class, 'laporan_siswa'])->name('admin.laporan_siswa');
 

@@ -17,7 +17,7 @@ class CreatePenerbitsTable extends Migration
             $table->id();
             $table->string('kode',125);
             $table->string('nama',50);
-            $table->string('verif',125)->default('verified');
+            $table->string('verif',125)->default('unverified');
             $table->timestamps();
         });
     }
