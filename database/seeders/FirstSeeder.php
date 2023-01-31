@@ -86,17 +86,17 @@ class FirstSeeder extends Seeder
 
         //KATEGORI
         Kategori::create([
-            'kode' => 'Fantasi',
+            'kode' => 'fantasi',
             'nama' => 'Fantasi',
         ]);
 
         Kategori::create([
-            'kode' => 'Life',
+            'kode' => 'life',
             'nama' => 'Life',
         ]);
 
         Kategori::create([
-            'kode' => 'Money Management',
+            'kode' => 'money management',
             'nama' => 'Money Management',
         ]);
 
@@ -173,10 +173,10 @@ class FirstSeeder extends Seeder
             'user_id' => '2',
             'buku_id' => '1',
             'tgl_peminjaman' => '2023-01-06',
-            // 'tgl_pengembalian' => '',
+            'tgl_pengembalian' => '2023-01-12',
             'kondisi_buku_saat_dipinjam' => 'baik',
-            // 'kondisi_buku_saat_dikembalikan' => '',
-            // 'denda' => '',
+            'kondisi_buku_saat_dikembalikan' => 'rusak',
+            'denda' => '20000',
         ]);
 
         Peminjaman::create([

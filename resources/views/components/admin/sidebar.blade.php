@@ -21,10 +21,10 @@
                 <a href="{{ Route('admin.penerbit') }}">Data Penerbit</a>
             </li>
             <li class="submenu-item ">
-                <a href="">Administrator</a>
+                <a href="{{ Route('admin.administrator') }}">Administrator</a>
             </li>
             <li class="submenu-item ">
-                <a href="">Data Peminjaman</a>
+                <a href="{{ Route('admin.peminjaman') }}">Data Peminjaman</a>
             </li>
         </ul>
     </li>
@@ -39,7 +39,7 @@
                 <a href="">Data Buku</a>
             </li>
             <li class="submenu-item ">
-                <a href="">Kategori Buku</a>
+                <a href="{{ Route('admin.kategori') }}">Kategori Buku</a>
             </li>
         </ul>
     </li>

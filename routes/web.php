@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\AnggotaController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\Admin\PeminjamanController as AdminPeminjamanController;
 use App\Http\Controllers\Admin\PenerbitController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\PeminjamanController;
@@ -53,8 +55,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     Route::get('/anggota', [AnggotaController::class, 'indexAnggota'])->name('admin.anggota');
     Route::post('/tambah-anggota', [AnggotaController::class, 'storeAnggota'])->name('admin.tambah_anggota');
     Route::put('/edit/anggota/{id}', [AnggotaController::class, 'updateAnggota'])->name('admin.update.anggota');
-    Route::post('/update_status/{id}', [AnggotaController::class, 'updateStatus'])->name('admin.update_status_anggota');
     Route::delete('/hapus/anggota/{id}', [AnggotaController::class, 'deleteAnggota']);
+    Route::put('/update_status/{id}', [AnggotaController::class, 'update_status'])->name('admin.update_status');
 
     //                [ Penerbit ]  
     Route::get('/penerbit', [PenerbitController::class, 'indexPenerbit'])->name('admin.penerbit');
@@ -65,6 +67,18 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
 
     //                [ Administrator ]  
     Route::get('/administrator', [AdministratorController::class, 'indexAdministrator'])->name('admin.administrator');
+    Route::post('/tambah-admin', [AdministratorController::class, 'storeAdministrator'])->name('admin.tambah_admin');
+    Route::put('/edit/admin/{id}', [AdministratorController::class, 'updateAdmin'])->name('admin.update_admin');
+    Route::delete('/hapus/admin/{id}', [AdministratorController::class, 'deleteAdmin']);
+
+    //                [ Data Peminjaman ] 
+    Route::get('/data-peminjaman', [AdminPeminjamanController::class, 'indexPeminjaman'])->name('admin.peminjaman');
+
+    //- - - - - - - - - Katalog Buku - - - - - - - - - -
+    //                [ Kategori ] 
+    Route::get('/kategori', [KategoriController::class, 'indexKategori'])->name('admin.kategori');
+    Route::post('/tambah-kategori', [KategoriController::class, 'storeKategori'])->name('admin.tambah_kategori');
+    Route::put('/edit/kategori/{id}', [KategoriController::class, 'updateKategori'])->name('admin.update_kategori');
 
 
     //                [ Laporan ]

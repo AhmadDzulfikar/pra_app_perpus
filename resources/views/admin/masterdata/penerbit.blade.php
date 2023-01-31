@@ -166,9 +166,11 @@
 
                                     <td>
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#update-penerbit{{ $p->id }}">update</button>
+                                            data-bs-target="#update-penerbit{{ $p->id }}"><i
+                                                class="bi bi-pencil-square"></i></button>
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#hapus-penerbit{{ $p->id }}">delete</button>
+                                            data-bs-target="#hapus-penerbit{{ $p->id }}"><i
+                                                class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
                             @endforeach

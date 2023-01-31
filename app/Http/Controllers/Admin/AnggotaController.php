@@ -61,10 +61,17 @@ class AnggotaController extends Controller
         return redirect()->back();
     }
 
-    public function updateStatus($id, Request $request){
+    public function update_status($id, Request $request){
         $anggota = User::where('id', $id)->first();
 
+        // if ($anggota != null) {
+        //     if ($request->verif == 'unverified') {
+        //         $anggota->update([
+        //             'verif' => 'verified'
+        //         ]);
+        //     }
         if ($anggota != null) {
+
             if ($request->verif == 'unverified') {
                 $anggota->update([
                     'verif' => 'verified'

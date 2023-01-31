@@ -196,8 +196,6 @@
                 @endforeach
                 {{-- Modal Delete --}}
 
-
-
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
@@ -222,13 +220,15 @@
                                 <td>{{ $a->fullname }}</td>
                                 <td>{{ $a->kelas }}</td>
                                 <td>{{ $a->alamat }}</td>
+
                                 <td class="align-middle">
-                                    <form action="{{ route('admin.update_status_anggota', $a->id) }}" method="POST"
+                                    <form action="{{ route('admin.update_status', $a->id) }}" method="POST"
                                         style="display: inline-block">
                                         @csrf
+                                        @method('PUT')
                                         <input type="hidden" value="{{ $a->verif }}" name="verif">
                                         <button type="submit"
-                                            class="btn shadow btn-outline-{{ $a->verif == 'verified' ? 'success' : 'danger' }}">
+                                            class="btn btn-{{ $a->verif == 'verified' ? 'success' : 'danger' }}">
                                             {{ $a->verif }}
                                         </button>
                                     </form>
@@ -236,9 +236,11 @@
 
                                 <td>
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#update-anggota{{ $a->id }}">update</button>
+                                        data-bs-target="#update-anggota{{ $a->id }}"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#hapus-anggota{{ $a->id }}">delete</button>
+                                        data-bs-target="#hapus-anggota{{ $a->id }}"><i
+                                            class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                         @endforeach
