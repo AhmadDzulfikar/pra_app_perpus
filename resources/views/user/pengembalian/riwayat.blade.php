@@ -25,6 +25,7 @@
                             <th>Tanggal Peminjaman</th>
                             <th>Tanggal Pengembalian</th>
                             <th>Kondisi Buku</th>
+                            <th>Denda</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,7 @@
                                 <td>{{ $peminjaman->tgl_peminjaman }}</td>
                                 <td>{{ $peminjaman->tgl_pengembalian }}</td>
                                 <td>{{ $peminjaman->kondisi_buku_saat_dipinjam }}</td>
+                                <td>{{ $peminjaman->denda }}</td>
                             </tr>
                         @endforeach
                     </tbody>

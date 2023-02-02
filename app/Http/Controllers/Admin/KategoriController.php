@@ -39,4 +39,11 @@ class KategoriController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function deleteKategori($id){
+        $kategori = Kategori::findOrFail($id);
+        $kategori->delete();
+
+        return redirect()->back();
+    }
 }

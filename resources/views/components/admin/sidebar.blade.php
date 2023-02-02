@@ -36,7 +36,7 @@
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="">Data Buku</a>
+                <a href="{{ Route('admin.buku') }}">Data Buku</a>
             </li>
             <li class="submenu-item ">
                 <a href="{{ Route('admin.kategori') }}">Kategori Buku</a>
@@ -45,7 +45,7 @@
     </li>
 
     <li class="sidebar-item  ">
-        <a href="{{ Route('admin.laporan_siswa') }}" class='sidebar-link'>
+        <a href="{{ Route('admin.index') }}" class='sidebar-link'>
             <i class="bi bi-file-earmark-medical-fill"></i>
             <span>Laporan Perpustakaan</span>
         </a>

@@ -7,7 +7,7 @@
     @endif
     <div class="row">
         <div class="col-9">
-            <h4>Data Penerbit E - Perpus</h4>
+            <h4>Data Buku E - Perpus</h4>
         </div>
         <div class="col-3">
             <a href="{{ Route('user.form_peminjaman') }}" class="btn btn-primary float">Pinjam</a>
@@ -30,28 +30,72 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form action="{{ Route('admin.tambah_kategori') }}" enctype="multipart/form-data"
-                                method="POST" autocomplete="off">
+                            <form action="{{ Route('admin.tambah_kategori') }}" enctype="multipart/form-data" method="POST"
+                                autocomplete="off">
                                 @csrf
                                 <div class="modal-body">
-                                    <div class="col-12 mb-4">
-                                        <div class="form-group">
-                                            <label>Kode</label>
-                                            <input type="text" class="form-control" name="kode"
-                                                placeholder="Kode Kategori" required />
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">Judul Buku</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""
+                                            name="judul" required>
                                     </div>
-                                    <div class="col-12 mb-4">
-                                        <div class="form-group">
-                                            <label>Nama</label>
-                                            <input type="text" class="form-control" name="nama"
-                                                placeholder="Nama Kategori" required />
-                                        </div>
+
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">Kategori</label>
+                                        <select name="kategori_id" id="" class="form-select">
+
+                                            <option>Pilih Opsi</option>
+
+                                            @foreach ($kategori as $k)
+                                                <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">Penerbit</label>
+                                        <select name="penerbit_id" id="" class="form-select">
+
+                                            <option>Pilih Opsi</option>
+
+                                            @foreach ($penerbit as $p)
+                                                <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">Pengarang</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""
+                                            name="pengarang" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">Tahun Terbit</label>
+                                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder=""
+                                            name="tahun_terbit" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">Isbn</label>
+                                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder=""
+                                            name="isbn" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">jumlah buku baik</label>
+                                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder=""
+                                            name="j_buku_baik" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">jumlah buku rusak</label>
+                                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder=""
+                                            name="j_buku_rusak" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
@@ -61,7 +105,7 @@
                 <!-- Modal ADD DATA -->
 
                 {{-- Modal EDIT  --}}
-                @foreach ($kategori as $k)
+                {{-- @foreach ($kategori as $k)
                     <div class="modal fade" id="update-penerbit{{ $k->id }}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -97,12 +141,12 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
                 {{-- Modal EDIT --}}
 
 
                 {{-- Modal DELETE --}}
-                @foreach ($kategori as $p)
+                {{-- @foreach ($kategori as $p)
                     <div class="modal fade modal-borderless" id="hapus-penerbit{{ $p->id }}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -128,30 +172,44 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
                 {{-- Modal Delete --}}
 
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Kode</th>
-                            <th>Nama Kategori</th>
+                            <th>Foto</th>
+                            <th>Judul</th>
+                            <th>Kategori</th>
+                            <th>Penerbit</th>
+                            <th>Pengarang</th>
+                            <th>Tahun Terbit</th>
+                            <th>Isbn</th>
+                            <th>Jml Buku Baik</th>
+                            <th>Jml Buku Rusak</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($kategori as $k)
+                        @foreach ($buku as $b)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $k->kode }}</td>
-                                <td>{{ $k->nama }}</td>
+                                <td>{{ $b->foto }}</td>
+                                <td>{{ $b->judul }}</td>
+                                <td>{{ $b->kategori->nama }}</td>
+                                <td>{{ $b->penerbit->nama }}</td>
+                                <td>{{ $b->pengarang }}</td>
+                                <td>{{ $b->tahun_terbit }}</td>
+                                <td>{{ $b->isbn }}</td>
+                                <td>{{ $b->j_buku_baik }}</td>
+                                <td>{{ $b->j_buku_rusak }}</td>
                                 <td>
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#update-penerbit{{ $k->id }}"><i
+                                        data-bs-target="#update-penerbit{{ $b->id }}"><i
                                             class="bi bi-pencil-square"></i></button>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#hapus-penerbit{{ $k->id }}"><i
+                                        data-bs-target="#hapus-penerbit{{ $b->id }}"><i
                                             class="bi bi-trash"></i></button>
                                 </td>
                             </tr>

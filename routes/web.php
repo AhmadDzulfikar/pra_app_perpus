@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\AnggotaController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\DatabukuController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PeminjamanController as AdminPeminjamanController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\User\PengembalianController;
 use App\Http\Controllers\User\PesanController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\UserRegister;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -75,15 +77,23 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     Route::get('/data-peminjaman', [AdminPeminjamanController::class, 'indexPeminjaman'])->name('admin.peminjaman');
 
     //- - - - - - - - - Katalog Buku - - - - - - - - - -
+    //                [ Data Buku ] 
+    Route::get('/buku', [DatabukuController::class, 'indexBuku'])->name('admin.buku');
+    Route::post('/tambah-buku', [DatabukuController::class, 'storeBuku'])->name('admin.tambah_buku');
     //                [ Kategori ] 
     Route::get('/kategori', [KategoriController::class, 'indexKategori'])->name('admin.kategori');
     Route::post('/tambah-kategori', [KategoriController::class, 'storeKategori'])->name('admin.tambah_kategori');
     Route::put('/edit/kategori/{id}', [KategoriController::class, 'updateKategori'])->name('admin.update_kategori');
+    Route::delete('/hapus/kategori/{id}', [KategoriController::class, 'deleteKategori']);
 
 
     //                [ Laporan ]
-    Route::get('/siswa', [LaporanController::class, 'laporan_siswa'])->name('admin.laporan_siswa');
+    Route::get('/index', [LaporanController::class, 'index'])->name('admin.index');
+    Route::post('/laporan-pdf', [LaporanController::class, 'laporan_pdf'])->name('admin.lap_pdf');
 
+    Route::post('/peminjaman', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_peminjaman');
+    Route::post('/pengembalian', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_pengembalian');
+    Route::post('/laporan_user', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_user');
 }); 
 
 //User

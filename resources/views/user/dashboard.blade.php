@@ -13,7 +13,7 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-header">
-                                <img src="{{ asset($buku->foto) }}" style="height: 150px;object-fit: cover;" class="card-img"
+                                <img src="{{ $buku->foto ?? '/assets/images/not-found.png' }}" style="height: 150px;object-fit: cover;" class="card-img"
                                     alt="....">
                             </div>
                             <div class="card-body">
