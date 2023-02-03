@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\AnggotaController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DatabukuController;
+use App\Http\Controllers\Admin\IdentitasController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PeminjamanController as AdminPeminjamanController;
@@ -80,6 +81,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     //                [ Data Buku ] 
     Route::get('/buku', [DatabukuController::class, 'indexBuku'])->name('admin.buku');
     Route::post('/tambah-buku', [DatabukuController::class, 'storeBuku'])->name('admin.tambah_buku');
+    Route::put('/edit/buku/{id}', [DatabukuController::class, 'updateBuku'])->name('admin.update.buku');
+    Route::delete('/hapus/buku/{id}', [DatabukuController::class, 'deleteBuku']);
     //                [ Kategori ] 
     Route::get('/kategori', [KategoriController::class, 'indexKategori'])->name('admin.kategori');
     Route::post('/tambah-kategori', [KategoriController::class, 'storeKategori'])->name('admin.tambah_kategori');
@@ -94,7 +97,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     Route::post('/peminjaman', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_peminjaman');
     Route::post('/pengembalian', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_pengembalian');
     Route::post('/laporan_user', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_user');
-}); 
+
+    //                [ Identitas ]
+    Route::get('/indexIdentitas', [IdentitasController::class, 'indexIdentitas'])->name('admin.identitas');
+    Route::put('/edit/identitas', [IdentitasController::class, 'updateIdentitas'])->name('admin.update_identitas');
+});     
 
 //User
 Route::middleware(['auth', 'role:user'])->prefix('/user')->group(function () {

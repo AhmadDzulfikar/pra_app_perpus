@@ -11,7 +11,7 @@
             <div class="row">
                 @foreach ($bukus as $buku)
                     <div class="col-3">
-                        <div class="card">
+                        <div class="card"style="max-height:500px; min-height:425px">
                             <div class="card-header">
                                 <img src="{{ $buku->foto ?? '/assets/images/not-found.png' }}" style="height: 150px;object-fit: cover;" class="card-img"
                                     alt="....">
