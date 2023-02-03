@@ -90,13 +90,16 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
     Route::delete('/hapus/kategori/{id}', [KategoriController::class, 'deleteKategori']);
 
 
-    //                [ Laporan ]
+    //                [ Laporan PDF]
     Route::get('/index', [LaporanController::class, 'index'])->name('admin.index');
     Route::post('/laporan-pdf', [LaporanController::class, 'laporan_pdf'])->name('admin.lap_pdf');
 
     Route::post('/peminjaman', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_peminjaman');
     Route::post('/pengembalian', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_pengembalian');
     Route::post('/laporan_user', [LaporanController::class, 'laporan_pdf'])->name('admin.laporan_user');
+
+    //                [ Laporan Excel]
+    Route::post('laporan-excel', [LaporanController::class, 'laporan_excel'])->name('admin.laporan_excel');
 
     //                [ Identitas ]
     Route::get('/indexIdentitas', [IdentitasController::class, 'indexIdentitas'])->name('admin.identitas');

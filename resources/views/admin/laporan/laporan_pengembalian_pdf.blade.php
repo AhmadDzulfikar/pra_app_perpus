@@ -82,7 +82,7 @@
                         <td>{{ $p->tgl_peminjaman }}</td>
                         <td>{{ $p->tgl_pengembalian }}</td>
                         <td>{{ $p->kondisi_buku_saat_dipinjam }}</td>
-                        <td>{{ $p->denda }}</td>
+                        <td>{{ $p->denda == 0 ? 'Tidak Ada' : 'Rp' . '.' . $p->denda }}</td>
                     </tr>
                 @endforeach
             </tbody>

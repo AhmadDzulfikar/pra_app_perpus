@@ -8,6 +8,8 @@ use App\Models\Peminjaman;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\LaporanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class LaporanController extends Controller
@@ -42,5 +44,9 @@ class LaporanController extends Controller
             $pdf = PDF::loadview('admin.laporan.laporan_siswa_pdf', ['count' => $count, 'identitas' => $identitas, 'identitas' => $identitas, 'anggota' => $anggota, 'nama' => $nama]);
             return $pdf->stream('laporan-user-pdf.pdf');
         }
+    }
+
+    public function laporan_excel(Request $request){
+        return Excel::download(new LaporanExport($request->tgl_peminjaman), 'laporan-peminjaman.xlsx');
     }
 }
