@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-9">
             <h3>Pesan Terkirim</h3>
-            <p class="text-subtitle text-muted">Kirim Pesan Ke Admin</p>
+            <p class="text-subtitle text-muted">Kirim Pesan Ke Anggota</p>
         </div>
     </div>
     <section class="section">
@@ -28,7 +28,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form method="POST" action={{ route('user.kirim_pesan') }} enctype="multipart/form-data">
+                            <form method="POST" action={{ route('admin.kirim_pesan') }} enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                 <div class="modal-body">
@@ -83,21 +83,17 @@
                             <th>Isi Pesan</th>
                             <th>Status Pesan</th>
                             <th>Tanggal Kirim</th>
-                            {{-- <th>Aksi</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($pesan as $key => $p)
                             <tr>
-                                {{-- @dd($p->penerima) --}}
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $p->penerima->fullname }}</td>
                                 <td>{{ $p->judul }}</td>
                                 <td>{{ $p->isi }}</td>
                                 <td>{{ $p->status }}</td>
                                 <td>{{ $p->tgl_kirim }}</td>
-                                {{-- <td><button class="btn btn-danger"><i class="bi bi-trash"></i></button></td> --}}
-                                {{-- <td><button class="btn btn-success"><i class="bi bi-check-lg"></i></button></td> --}}
                             </tr>
                         @endforeach
                     </tbody>

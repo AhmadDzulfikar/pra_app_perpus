@@ -10,7 +10,7 @@
 
     <li class="sidebar-item  has-sub">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-stack"></i>
+            <i class="bi bi-app-indicator"></i>
             <span>Master Data</span>
         </a>
         <ul class="submenu ">
@@ -31,7 +31,7 @@
 
     <li class="sidebar-item  has-sub">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-collection-fill"></i>
+            <i class="bi bi-bookmarks"></i>
             <span>Katalog Buku</span>
         </a>
         <ul class="submenu ">
@@ -46,14 +46,14 @@
 
     <li class="sidebar-item  ">
         <a href="{{ Route('admin.index') }}" class='sidebar-link'>
-            <i class="bi bi-file-earmark-medical-fill"></i>
+            <i class="bi bi-clipboard-data"></i>
             <span>Laporan Perpustakaan</span>
         </a>
     </li>
 
     <li class="sidebar-item  ">
         <a href="{{ Route('admin.identitas') }}" class='sidebar-link'>
-            <i class="bi bi-file-earmark-medical-fill"></i>
+            <i class="bi bi-receipt"></i>
             <span>Identitas Aplikasi</span>
         </a>
     </li>
@@ -61,19 +61,19 @@
 
     <li class="sidebar-item  has-sub">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-collection-fill"></i>
+            <i class="bi bi-chat-left-text"></i>
             <span>Pesan</span>
         </a>
         <ul class="submenu ">
             <li class="submenu-item ">
-                <a href="">Pesan masuk
+                <a href="{{ route('admin.pesan_masuk') }}">Pesan masuk
                     <span class="badge bg-light-danger badge-pill badge-round float-right mt-50">
                         {{ count($pesan) }}
                     </span>
                 </a>
             </li>
             <li class="submenu-item ">
-                <a href="">Pesan terkirim</a>
+                <a href="{{ route('admin.pesan_terkirim') }}">Pesan terkirim</a>
             </li>
         </ul>
     </li>
@@ -82,7 +82,7 @@
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
 document.getElementById('logout-form').submit();" class="sidebar-link">
-            <i class="bi bi-arrow-left-square-fill"></i>
+            <i class="bi bi-box-arrow-in-down-left"></i>
             <span>Logout</span>
         </a>
 

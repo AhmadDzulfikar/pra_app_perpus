@@ -49,7 +49,7 @@ class LaporanExport implements FromView, ShouldAutoSize, WithEvents
 
             AfterSheet::class => function (AfterSheet $event) {
                 //ngasih padding/jarak
-                $event->sheet->getDelegate()->getRowDimension('5')->setRowHeight(40);
+                $event->sheet->getDelegate()->getRowDimension('5')->setRowHeight(25);
 
                 //ngasih warna belakang
                 $event->sheet->getDelegate()->getStyle('A5:F5')

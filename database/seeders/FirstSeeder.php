@@ -203,8 +203,8 @@ class FirstSeeder extends Seeder
         Pesan::create([
             'penerima_id' => '1',
             'pengirim_id' => '2',
-            'judul' => 'Buku Dipinjam',
-            'isi' => 'Buku sedang dipinjam, harap dikembalikan tanggal 30',
+            'judul' => 'Pengembalian Buku',
+            'isi' => 'Buku akan saya kembalikan segera',
             'status' => 'terkirim',
             'tgl_kirim' => '2023-01-21',
         ]);
@@ -212,8 +212,8 @@ class FirstSeeder extends Seeder
         Pesan::create([
             'penerima_id' => '1',
             'pengirim_id' => '2',
-            'judul' => 'Buku telah dipinjam',
-            'isi' => 'Terimakasih telah meminjam buku diperpus',
+            'judul' => 'Terimakasih Perpus',
+            'isi' => 'Buku yang ada di perpus ini sungguh keren',
             'status' => 'terkirim',
             'tgl_kirim' => '2023-01-21',
         ]);

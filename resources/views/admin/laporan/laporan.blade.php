@@ -81,11 +81,10 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
 
+        {{-- CETAK EXCEL --}}
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -128,7 +127,7 @@
                         <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile-tab">
                             <br>
 
-                            <form action="{{ route('admin.laporan_pengembalian') }}" method="POST" target="_blank">
+                            <form action="{{ route('admin.excel_pengembalian') }}" method="POST" target="_blank">
                                 @csrf
                                 <div class="mt-4">
                                     <label for="">Tanggal Pengembalian</label>
@@ -146,7 +145,7 @@
                         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
                             <br>
 
-                            <form action="{{ route('admin.laporan_user') }}" method="POST" target="_blank">
+                            <form action="{{ route('admin.excel_user') }}" method="POST" target="_blank">
                                 @csrf
                                 <div class="col-md-12 mb-4">
                                     <h6>Nama Siswa</h6>

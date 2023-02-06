@@ -24,11 +24,11 @@
         }
     </style>
 
-<style>
-    .choices__input{
-        color: black;
-    }
-</style>
+    <style>
+        .choices__input {
+            color: black;
+        }
+    </style>
 </head>
 
 @php
@@ -37,6 +37,15 @@
     $pesan = Pesan::where('penerima_id', Auth::user()->id)
         ->where('status', 'terkirim')
         ->get();
+    use App\Models\Pemberitahuan;
+    $pemberitahuan = Pemberitahuan::orderBy('id', 'DESC')
+        ->take(5)
+        ->get();
+
+    // use App\Models\Peminjaman;
+    // $peminjaman = Peminjaman::where('user_id'  $request->user_id)
+    // ->take()
+    // ->get();
 @endphp
 
 <body>
@@ -168,15 +177,39 @@
                                     <li class="nav-item dropdown me-3">
                                         <a class="nav-link active dropdown-toggle text-gray-600" href="#"
                                             data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class='bi bi-bell bi-sub fs-4'></i>
+
+                                            <i class="bi bi-bell fs-4"></i> <span
+                                                class="badge badge-notification bg-danger">
+
+                                                {{ count($pemberitahuan) }}
+                                            </span>
                                         </a>
 
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="dropdownMenuButton">
-                                            <li>
-                                                <h6 class="dropdown-header">Notifications</h6>
-                                            </li>
-                                            <li><a class="dropdown-item">No notification available</a></li>
+                                            @if (count($pemberitahuan) == 0)
+                                                <li><a class="dropdown-item" href="#">
+                                                        No New Pemberitahuan
+                                                    </a>
+                                                </li>
+                                            @else
+                                                @foreach ($pemberitahuan as $infoPemberitahuan)
+                                                    <li class="dropdown-item notification-item">
+                                                        <a class="d-flex align-items-center" href="#">
+                                                            <div class="notification-icon bg-primary">
+                                                                <i class="bi bi-bell-fill align-middle"></i>
+                                                            </div>
+                                                            <div class="notification-text ms-4">
+
+                                                                <p class="notification-subtitle font-thin text-sm">
+                                                                    {{ $infoPemberitahuan->isi }}
+                                                                    {{-- {{ $infoPemberitahuan->isi }} --}}
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </li>
                                 @endif
