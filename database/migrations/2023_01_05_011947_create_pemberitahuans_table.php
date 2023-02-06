@@ -17,7 +17,7 @@ class CreatePemberitahuansTable extends Migration
             $table->id();
             $table->text('isi');
             $table->string('level_user',125)->nullable();
-            $table->enum('status', ['aktif', 'nonaktif']);
+            $table->enum('status', ['peminjaman', 'pengembalian']);
             $table->timestamps();
         });
     }

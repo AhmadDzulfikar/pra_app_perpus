@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Buku;
+use App\Models\Pemberitahuan;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,12 @@ class PengembalianController extends Controller
                 'denda' => 50000
             ]);
         }
+
+        // Update Pemberitahuan
+        Pemberitahuan::create([
+            "isi" => Auth::user()->username . " Berhasil Mengembalikan Buku " . $buku->judul,
+            "status" => "pengembalian"
+        ]);
 
         return redirect()->route('user.riwayat_pengembalian');
     }

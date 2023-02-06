@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('login', [App\Http\Controllers\Api\AuthController::class, 'login']);
+
+// Auth::routes();
+// User
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Admin
+Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+    
+});
+
+
 
 //Pesan
 Route::get('pesan', [App\Http\Controllers\API\PesanApiController::class, 'index']);

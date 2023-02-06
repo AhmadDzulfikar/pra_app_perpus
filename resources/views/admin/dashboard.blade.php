@@ -69,6 +69,22 @@
                 </div>
             </div>
         </div>
+    </div>
+    
+    <div class="col-12 text-center mt-4">
+
+        @php
+            use App\Models\Identitas;
+            $identitas = Identitas::first();
+
+        @endphp
+        <img src="{{ $identitas->foto ?? '/assets/images/not-found.png' }}" alt="" width="400" height="300"
+            class="mb-5">
+        <h5 class="mb-4">{{ $identitas->nama_app }}</h5>
+        <h5 class="mb-4">{{ $identitas->email_app }}</h5>
+        <h5 class="mb-4">{{ $identitas->no_hp }}</h5>
+        <h5 class="mb-4">{{ $identitas->alamat_app }}</h5>
+    </div>
 
 
     @endsection

@@ -237,23 +237,23 @@ class FirstSeeder extends Seeder
         ]);
 
         //PEMBERITAHUAN
-        Pemberitahuan::create([
-            'isi'    => 'Maaf server sedang maintance',
-            // 'level_user'	=> '',
-            'status' => 'aktif',
-        ]);
+        // Pemberitahuan::create([
+        //     'isi'    => 'Maaf server sedang maintance',
+        //     // 'level_user'	=> '',
+        //     'status' => 'aktif',
+        // ]);
 
-        Pemberitahuan::create([
-            'isi'    => 'Maaf perpus tutup sampai tanggal 20',
-            // 'level_user'	=> '',
-            'status' => 'nonaktif',
-        ]);
+        // Pemberitahuan::create([
+        //     'isi'    => 'Maaf perpus tutup sampai tanggal 20',
+        //     // 'level_user'	=> '',
+        //     'status' => 'nonaktif',
+        // ]);
 
-        Pemberitahuan::create([
-            'isi'    => 'Pengambilan buku paket sampai tanggal 30',
-            // 'level_user'	=> '',
-            'status' => 'aktif',
-        ]);
+        // Pemberitahuan::create([
+        //     'isi'    => 'Pengambilan buku paket sampai tanggal 30',
+        //     // 'level_user'	=> '',
+        //     'status' => 'aktif',
+        // ]);
 
         //IDENTITAS
         identitas::create([

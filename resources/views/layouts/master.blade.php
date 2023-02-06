@@ -41,11 +41,12 @@
     $pemberitahuan = Pemberitahuan::orderBy('id', 'DESC')
         ->take(5)
         ->get();
-
+    
     // use App\Models\Peminjaman;
     // $peminjaman = Peminjaman::where('user_id'  $request->user_id)
     // ->take()
     // ->get();
+    
 @endphp
 
 <body>
@@ -197,13 +198,17 @@
                                                     <li class="dropdown-item notification-item">
                                                         <a class="d-flex align-items-center" href="#">
                                                             <div class="notification-icon bg-primary">
-                                                                <i class="bi bi-bell-fill align-middle"></i>
+
+                                                                @if ($infoPemberitahuan->status == 'peminjaman')
+                                                                    {{-- <i class="bi bi-belld-fill align-middle"></i> --}}
+                                                                    <i class="bi bi-person"></i>
+                                                                @else
+                                                                    <i class="bi bi-arrow-repeat align-middle"></i>
+                                                                @endif
                                                             </div>
                                                             <div class="notification-text ms-4">
-
                                                                 <p class="notification-subtitle font-thin text-sm">
                                                                     {{ $infoPemberitahuan->isi }}
-                                                                    {{-- {{ $infoPemberitahuan->isi }} --}}
                                                                 </p>
                                                             </div>
                                                         </a>
