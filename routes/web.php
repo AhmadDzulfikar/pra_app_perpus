@@ -38,6 +38,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//tidak bisa kembali ke login dengan cara hapus url
 Route::get('/home', function () {
     if (Auth::user()->role == 'admin') {
 

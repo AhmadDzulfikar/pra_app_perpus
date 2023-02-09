@@ -17,16 +17,18 @@ class Role
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if (Auth::user()->role == $role){
+        if (Auth::user()->role == $role) {
             return $next($request);
         }
 
-        abort(403);
-
-        return response()->json(
-            [
-                "message" => "Forbiden Access"
-            ]
+        if ($request->wantsJson()) {
+            return response()->json(
+                [
+                    "message" => "Forbiden Access"
+                ]
             );
+        }
+
+        abort(403);
     }
 }
