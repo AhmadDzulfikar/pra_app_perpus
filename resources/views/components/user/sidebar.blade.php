@@ -1,7 +1,7 @@
 <ul class="menu">
     <li class="sidebar-title">Menu</li>
 
-    <li class="sidebar-item active ">
+    <li class="sidebar-item {{ Request::is('user/dashboard*') ? 'active' : '' }} ">
         <a href={{ route('user.dashboard') }} class='sidebar-link'>
             <i class="bi bi-grid-fill"></i>
             <span>Dashboard</span>
@@ -14,7 +14,7 @@
             <span>Peminjaman Buku</span>
         </a>
         <ul class="submenu ">
-            <li class="submenu-item ">
+            <li class="submenu-item {{ Request::is('user/form-peminjaman*') ? 'active' : '' }}">
                 <a href="{{ Route('user.form_peminjaman') }}">Formulir Peminjaman Buku</a>
             </li>
             <li class="submenu-item ">

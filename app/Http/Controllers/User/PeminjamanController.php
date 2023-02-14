@@ -60,7 +60,7 @@ class PeminjamanController extends Controller
         ->where('user_id', Auth::user()->id)
         ->first();
         if ($cek_buku) {
-            return redirect()->back()
+            return redirect()->route("user.riwayat_peminjaman")
             ->with("status", "danger")
             ->with("message", "Tidak Bisa Meminjam Buku Dengan Judul Yang Sama");
         }
@@ -92,7 +92,7 @@ class PeminjamanController extends Controller
                 ->with("status", "success")
                 ->with("message", "Berhasil Menambah Data");
         }
-        return redirect()->back()
+        return redirect()->route("user.riwayat_peminjaman")
             ->with("status", "danger")
             ->with("message", "Gagal menambah data");
 

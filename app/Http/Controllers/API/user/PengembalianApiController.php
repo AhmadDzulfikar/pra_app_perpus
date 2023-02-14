@@ -5,14 +5,16 @@ namespace App\Http\Controllers\API\user;
 use App\Http\Controllers\Controller;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PengembalianApiController extends Controller
 {
-    public function index(){        
+    public function index()
+    {
         $peminjaman = Peminjaman::with('user', 'buku')->get();
         $data = [];
 
-        foreach($peminjaman as $value) {
+        foreach ($peminjaman as $value) {
             $datas['user'] = $value->user->username;
             $datas['buku'] = $value->buku->judul;
             $datas['tgl_peminjaman'] = $value->tgl_peminjaman;
@@ -27,21 +29,22 @@ class PengembalianApiController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
-        $peminjaman = Peminjaman::create([
+        $peminjaman = Peminjaman::findOrFail($id);
+
+        $peminjaman->update([
             'user_id' => $request->user_id,
             'buku_id' => $request->buku_id,
-            'tgl_peminjaman' => $request->tgl_peminjaman,
-            'tgl_pengembalian' => $request->tgl_pengembalian,
+            'tgl_pengembalian' => Carbon::now()->format('Y-m-d'),
             'kondisi_buku_saat_dipinjam' => $request->kondisi_buku_saat_dipinjam,
             'kondisi_buku_saat_dikembalikan' => $request->kondisi_buku_saat_dikembalikan,
             'denda' => $request->denda,
         ]);
 
         return response()->json([
-            'msg' => 'berhasil menambah data',
-            'data'=> $peminjaman,
+            'msg' => 'Berhasil Mengembalikan buku',
+            'data' => $peminjaman
         ]);
     }
 }

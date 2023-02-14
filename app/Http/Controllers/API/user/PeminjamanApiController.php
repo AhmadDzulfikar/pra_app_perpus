@@ -5,9 +5,7 @@ namespace App\Http\Controllers\API\user;
 use App\Http\Controllers\Controller;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Buku;
-
+use Carbon\Carbon;
 
 class PeminjamanApiController extends Controller
 {
@@ -33,8 +31,7 @@ class PeminjamanApiController extends Controller
         $peminjaman = Peminjaman::create([
             'user_id' => $request->user_id,
             'buku_id' => $request->buku_id,
-            'tgl_peminjaman' => $request->tgl_peminjaman,
-            'tgl_pengembalian' => $request->tgl_pengembalian,
+            'tgl_peminjaman' => Carbon::now()->format('Y-m-d'),
             'kondisi_buku_saat_dipinjam' => $request->kondisi_buku_saat_dipinjam,
         ]);
 

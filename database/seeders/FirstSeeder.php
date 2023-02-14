@@ -47,7 +47,7 @@ class FirstSeeder extends Seeder
             'password'    => Hash::make("password"),
             'kelas'    => 'XII - RPL',
             'alamat' => 'JL. Manunggal IX No. 98',
-            // 'verif'    => '',
+            'verif'    => 'verified',
             'role' => 'user',
             'join_date'    => '2023-01-06',
             // 'terakhir_login' => '',
@@ -236,7 +236,7 @@ class FirstSeeder extends Seeder
             'tgl_kirim' => '2023-01-16',
         ]);
 
-        //PEMBERITAHUAN
+        // PEMBERITAHUAN
         // Pemberitahuan::create([
         //     'isi'    => 'Maaf server sedang maintance',
         //     // 'level_user'	=> '',
