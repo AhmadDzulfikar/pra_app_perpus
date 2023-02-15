@@ -143,7 +143,7 @@
                                         </li>
                                         @foreach ($pesan as $p)
                                             <li>
-                                                <form action="{{ route('user.ubah_status') }}" method="POST">
+                                                <form action="{{ Auth::user()->role == 'user' ? route('user.ubah_status') : route('admin.ubah_status') }}" method="POST">
                                                     @csrf <button class="dropdown-item" type="submit"> <input
                                                             type="hidden" name="id"
                                                             value="{{ $p->id }}">

@@ -25,7 +25,7 @@ class PesanController extends Controller
         return view('admin.pesan.masuk', compact('pesan'));
     }
 
-    public function ubah_status(Request $request){
+    public function admin_status(Request $request){
         $request = Pesan::where('id', $request->id)->first();
         $request->update([
             'status' => 'dibaca'

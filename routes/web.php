@@ -111,7 +111,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
 
     //- - - - - - - - - Pesan - - - - - - - - - -
     Route::get('/pesan-masuk', [AdminPesanController::class, 'pesanMasuk'])->name('admin.pesan_masuk');
-    Route::post('/ubah-status', [AdminPesanController::class, 'ubah_status'])->name('admin.ubah_status');
+    Route::post('/admin-status', [AdminPesanController::class, 'admin_status'])->name('admin.ubah_status');
 
     Route::get('/pesan-terkirim', [AdminPesanController::class, 'pesanTerkirim'])->name('admin.pesan_terkirim');
     Route::post('/kirim-pesan', [AdminPesanController::class, 'kirimPesan'])->name('admin.kirim_pesan');
