@@ -18,9 +18,9 @@
                             <h4>
                                 <span class="badge bg-light-danger">{{ $k->nama }}</span>
                             </h4>
-                            <div class="row">
+                            <div class="row d-flex flex-row flex-nowrap overflow-auto">
                                 @foreach ($k->bukus as $buku)
-                                    <div class="col-3">
+                                    <div class="col-xl-3 col-md-3 col-sm-3">
                                         <div class="card"style="max-height:500px; min-height:425px">
                                             <div class="card-header">
                                                 <img src="{{ $buku->foto ?? '/assets/images/not-found.png' }}"
