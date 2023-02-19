@@ -58,6 +58,7 @@ class PeminjamanController extends Controller
         //gaboleh minjem buku yg sama
         $cek_buku = Peminjaman::where('buku_id', $request->buku_id)
         ->where('user_id', Auth::user()->id)
+        ->where('tgl_pengembalian', null)
         ->first();
         if ($cek_buku) {
             return redirect()->route("user.riwayat_peminjaman")
