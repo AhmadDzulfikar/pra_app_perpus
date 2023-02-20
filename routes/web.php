@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DatabukuController;
 use App\Http\Controllers\Admin\IdentitasController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\admin\PemberitahuanController;
 use App\Http\Controllers\Admin\PeminjamanController as AdminPeminjamanController;
 use App\Http\Controllers\Admin\PenerbitController;
 use App\Http\Controllers\Admin\Pesan;
@@ -115,6 +116,13 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
 
     Route::get('/pesan-terkirim', [AdminPesanController::class, 'pesanTerkirim'])->name('admin.pesan_terkirim');
     Route::post('/kirim-pesan', [AdminPesanController::class, 'kirimPesan'])->name('admin.kirim_pesan');
+
+    //- - - - - - - - - Pemberitahuan - - - - - - - - -
+    Route::get('/pemberitahuan', [PemberitahuanController::class, 'pemberitahuan'])->name('admin.pemberitahuan');
+    Route::post('/pemberitahuan', [PemberitahuanController::class, 'tambahPemberitahuan'])->name('admin.tambah_pemberitahuan');
+    Route::put('/edit/penerbit/{id}', [PemberitahuanController::class, 'updatePemberitahuan'])->name('admin.update_pemberitahuan');
+    Route::delete('/hapus/pemberitahuan/{id}', [PemberitahuanController::class, 'deletePemberitahuan']);
+
 });     
 
 //User

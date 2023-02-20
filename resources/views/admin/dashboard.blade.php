@@ -1,5 +1,9 @@
 @extends('layouts.master')
 @section('content')
+<div class="col-3">
+    <a href="{{ Route('admin.pemberitahuan') }}" class="btn shadow btn-outline-primary btn-sm">Tambah Berita</a>
+</div>
+<br>
     <div class="row">
         <div class="col-6 col-md-3">
             <div class="card shadow">
